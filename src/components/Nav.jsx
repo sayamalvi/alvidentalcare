@@ -29,8 +29,17 @@ const Nav = () => {
                 </ul>
             </nav>
             <div className={classes.header__content__toggle}>
-                {!menuOpen ? <BiMenuAltRight onClick={menuTogglerHandler}
-                /> : <AiOutlineClose onClick={menuTogglerHandler} />}
+                {!menuOpen ?
+                    <BiMenuAltRight
+                        onClick={menuTogglerHandler}
+                        color="green"
+                        size="20px"
+                    /> :
+                    <AiOutlineClose
+                        onClick={menuTogglerHandler}
+                        color="white"
+                        size="20px"
+                    />}
             </div>
         </header>
     )

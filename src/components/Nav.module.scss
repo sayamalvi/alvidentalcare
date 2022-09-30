@@ -19,6 +19,7 @@
     justify-content: space-between;
     position: relative;
     z-index: 100;
+    box-shadow: 2px 3px 4px rgba($color: #b0afaf, $alpha: 1.0);
 
     &__content__nav {
         top: 0;
