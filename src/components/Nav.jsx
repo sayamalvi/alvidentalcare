@@ -10,7 +10,10 @@ const Nav = () => {
     return (
         <header className={classes.header}>
             <div className={classes.header__content}>
-                <img className={classes.header__content__logo} src={require('..//imgs/logo.png')} />
+                <a href='/'>
+                    <img className={classes.header__content__logo}
+                        src={require('..//imgs/logo.png')} />
+                </a>
             </div>
             <nav className={`${classes.header__content__nav} ${menuOpen ? classes.isMenu : ""}`}>
                 <ul>
@@ -33,12 +36,12 @@ const Nav = () => {
                     <BiMenuAltRight
                         onClick={menuTogglerHandler}
                         color="green"
-                        size="20px"
+                        size="25px"
                     /> :
                     <AiOutlineClose
                         onClick={menuTogglerHandler}
                         color="white"
-                        size="20px"
+                        size="25px"
                     />}
             </div>
         </header>

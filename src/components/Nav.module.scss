@@ -19,7 +19,7 @@
     justify-content: space-between;
     position: relative;
     z-index: 100;
-    box-shadow: 2px 3px 4px rgba($color: #b0afaf, $alpha: 1.0);
+    box-shadow: 2px 3px 4px rgba($color: #cfcbcb, $alpha: 1);
 
     &__content__nav {
         top: 0;
@@ -34,11 +34,12 @@
         align-items: center;
         text-align: center;
         backdrop-filter: blur(2px);
-        background-color: $lightGreen;
+        background-color: $darkGreen;
         transform: translate(0);
         transition: 0.3s ease;
 
         @include breakpoint(md) {
+            background-color: #fff;
             transform: none;
             flex-direction: row;
             width: auto;
@@ -63,16 +64,18 @@
                 transition: 0.3s ease all;
             }
             a {
+                letter-spacing: 4px;
                 text-decoration: none;
                 color: #fff;
+                font-weight: 600;
                 @include breakpoint(md) {
-                    color: $lightGreen;
+                    color: $darkGreen;
+                    letter-spacing: 0;
                 }
             }
         }
         &.isMenu {
             transform: translate(100%);
-            
         }
     }
     &__content__toggle {
