@@ -12,7 +12,7 @@ const Nav = () => {
             <div className={classes.header__content}>
                 <a href='/'>
                     <img className={classes.header__content__logo}
-                        src={require('..//imgs/logo.png')} />
+                        src={require('../../imgs/logo.png')} />
                 </a>
             </div>
             <nav className={`${classes.header__content__nav} ${menuOpen ? classes.isMenu : ""}`}>
