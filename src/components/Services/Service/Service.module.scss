@@ -5,10 +5,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: fit-content;
-    width: fit-content;
+    width: min-content;
     padding: 3rem 2rem;
-    border-radius: 5px;
+    border-radius: 25px;
     background-color: #fff;
     border: 1px solid $darkGreen;
     &:hover {
@@ -18,24 +17,29 @@
     text-align: center;
     margin: 2rem;
     &__img {
-        height: 2rem;
-        width: 2rem;
+        height: 8rem;
+        width: 8rem;
+        @include breakpoint(md) {
+            height: 10rem;
+            width: 10rem;
+        }
     }
     &__heading {
         color: $darkGreen;
         font-size: 1.5rem;
         font-weight: bold;
-        margin-bottom: 1rem;
+        margin: 1rem 0 1rem 0;
     }
     &__detail {
         color: #8a8989;
         font-size: 1rem;
-        max-width: 350px;
-        word-break: break-all;
+        max-width: 300px;
+        width: 500px;
     }
     &__link {
         color: #8a8989;
         margin-top: 2rem;
         cursor: pointer;
+        text-decoration: none;
     }
 }
