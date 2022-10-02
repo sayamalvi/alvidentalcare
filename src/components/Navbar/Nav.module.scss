@@ -18,12 +18,18 @@
 
 .header {
     font-family: $poppins;
+    font-size: 2.5rem;
+    @include breakpoint(md) {
+        font-size: 1rem;
+    }
     background: #fff;
     width: 100%;
     height: $headerHeight;
     padding: 0 1.5rem;
     @include breakpoint(md) {
         padding: 0 3rem;
+        position: fixed;
+        top: 0;
     }
     transition: 0.3s ease all;
     overflow: hidden;
@@ -36,6 +42,11 @@
     position: relative;
     z-index: 100;
     box-shadow: 2px 3px 4px rgba($color: #cfcbcb, $alpha: 1);
+    position: fixed;
+    @include breakpoint(md) {
+        position: fixed;
+        top: 0;
+    }
     &__content__nav {
         top: 0;
         right: 100%;
@@ -60,6 +71,7 @@
             width: auto;
             height: 100%;
             position: static;
+            top: 0;
         }
         ul {
             list-style: none;
