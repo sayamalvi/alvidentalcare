@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'
 import classes from './Service.module.scss'
-import Aos from 'aos/dist/aos.css'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 const Service = (props) => {
     useEffect(() => {
-        
+        Aos.init();
     })
+    
+
     return (
-        <div className={classes.card}>
+        <div className={classes.card} data-aos="fade-up">
             <img
                 className={classes.card__img}
                 src={props.img} alt={props.title} />
@@ -27,7 +30,6 @@ const Service = (props) => {
         </div>
 
     )
-
 }
 
 export default Service

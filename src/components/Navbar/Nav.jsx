@@ -8,14 +8,19 @@ const Nav = () => {
         setMenuOpen((p) => !p);
     }
     return (
-        <header className={classes.header}>
-            <div className={classes.header__content}>
+        <header
+            className={classes.header}>
+            <div
+                className={classes.header__content}>
                 <a href='/'>
-                    <img className={classes.header__content__logo}
+                    <img
+                        className={classes.header__content__logo}
+                        alt='logo'
                         src={require('../../imgs/logo.png')} />
                 </a>
             </div>
-            <nav className={`${classes.header__content__nav} ${menuOpen ? classes.isMenu : ""}`}>
+            <nav
+                className={`${classes.header__content__nav} ${menuOpen ? classes.isMenu : ""}`}>
                 <ul>
                     <li>
                         <a href='/'>Home</a>
