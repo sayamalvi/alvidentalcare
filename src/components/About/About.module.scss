@@ -2,35 +2,27 @@
 .about {
     background-color: $darkGreen;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 4rem 3rem;
-    width: max-content;
-    @include breakpoint(md) {
-        width: 100vw;
-    }
-    margin-bottom: 3rem;
-    @include breakpoint(md) {
-        width: 100%;
-    }
-
+    min-width: 100vw;
+    padding: 2rem;
     &__heading {
         font-size: 3rem;
         @include breakpoint(md) {
-            font-size: 5rem;
+            font-size: 4rem;
         }
         letter-spacing: 3px;
     }
     &__para {
         font-size: 1.2rem;
-        max-width: 400px;
         line-height: 2rem;
+        padding: 3rem 0;
+
         @include breakpoint(md) {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             line-height: 2.8rem;
-            max-width: 600px;
+            max-width: 500px;
+            text-align: center;
+            margin: 0 auto;
+            padding: 3rem 0;
         }
     }
 }
