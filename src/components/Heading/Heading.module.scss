@@ -18,10 +18,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    justify-self: center;
-    align-self: center;
+    text-align: center;
     height: 100vh;
-    padding: 1rem;
+    padding: 2rem;
     @include breakpoint(md) {
         margin-top: 2rem;
     }
@@ -31,7 +30,6 @@
         @include breakpoint(md) {
             font-size: 4rem;
         }
-        text-align: center;
     }
     &__first {
         color: rgb(138, 137, 137);
@@ -59,7 +57,10 @@
         color: $darkGreen;
         width: 4rem;
         position: absolute;
-        top: 90%;
+        top: 120%;
+        @include breakpoint(md) {
+            top: 90%;
+        }
         animation: jumpInfinite 2s infinite;
     }
 }

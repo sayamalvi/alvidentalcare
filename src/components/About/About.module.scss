@@ -1,12 +1,20 @@
 @import "../../styles/variables.scss";
 .about {
-    height: 90vh;
     background-color: $darkGreen;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 4rem 3rem;
+    width: max-content;
+    @include breakpoint(md) {
+        width: 100vw;
+    }
+    margin-bottom: 3rem;
+    @include breakpoint(md) {
+        width: 100%;
+    }
 
     &__heading {
         font-size: 3rem;
@@ -14,16 +22,15 @@
             font-size: 5rem;
         }
         letter-spacing: 3px;
-        margin: 0 0 2rem 0;
     }
     &__para {
         font-size: 1.2rem;
-        max-width: 90vw;
+        max-width: 400px;
         line-height: 2rem;
         @include breakpoint(md) {
             font-size: 1.4rem;
             line-height: 2.8rem;
-            max-width: 80vw;
+            max-width: 600px;
         }
     }
 }

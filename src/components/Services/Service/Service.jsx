@@ -6,7 +6,6 @@ const Service = (props) => {
     useEffect(() => {
         Aos.init();
     })
-    
 
     return (
         <div className={classes.card} data-aos="fade-up">
