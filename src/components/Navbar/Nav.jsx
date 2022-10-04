@@ -10,15 +10,12 @@ const Nav = () => {
     return (
         <header
             className={classes.header}>
-            <div
-                className={classes.header__content}>
-                <a href='/'>
-                    <img
-                        className={classes.header__content__logo}
-                        alt='logo'
-                        src={require('../../imgs/logo.png')} />
-                </a>
-            </div>
+            <img
+                className={classes.header__content__logo}
+                alt='logo'
+                src={require('../../imgs/logo.png')}
+                href='/'
+            />
             <nav
                 className={`${classes.header__content__nav} ${menuOpen ? classes.isMenu : ""}`}>
                 <ul>

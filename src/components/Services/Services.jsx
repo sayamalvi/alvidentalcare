@@ -10,7 +10,7 @@ const Services = () => {
     })
     return (
         <>
-            <h2 className={classes.heading} data-aos="zoom-in">Our Services</h2>
+            <h2 className={classes.heading} data-aos="zoom-in">What do we have to offer ? <br />A lot !</h2>
             <div className={classes.container}>
                 {data.map((service) => (
                     <Service
