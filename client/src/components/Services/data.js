@@ -54,14 +54,14 @@ const data = [
         id: 7,
         img: filling,
         title: "Tooth Fillings",
-        about: "We provide best tooth fillings",
+        about: "We fill your tooth with things you've never seen before",
         link: ""
     },
     {
         id: 8,
         img: braces,
         title: "Teeth straightening",
-        about: "We straighten your teeth more than you are straight",
+        about: "We'll make your teeth straighter than you",
         link: ""
     }
 ];

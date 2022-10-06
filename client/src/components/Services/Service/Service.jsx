@@ -8,7 +8,7 @@ const Service = (props) => {
     })
 
     return (
-        <div className={classes.card} data-aos="fade-up">
+        <div className={classes.card} data-aos="zoom-in-up">
             <img
                 className={classes.card__img}
                 src={props.img} alt={props.title} />
