@@ -5,10 +5,10 @@ import 'aos/dist/aos.css'
 import { AiOutlineArrowDown } from 'react-icons/ai'
 const Heading = () => {
     useEffect(() => {
-        Aos.init()
+        Aos.init({ duration: 2000 })
     }, [])
     return (
-        <div className={classes.heading} >
+        <div className={classes.heading}>
             <h4
                 className={classes.heading__first}
                 data-aos="zoom-in">WELCOME TO

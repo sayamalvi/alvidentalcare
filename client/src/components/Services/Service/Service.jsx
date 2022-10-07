@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import classes from './Service.module.scss'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
@@ -7,8 +7,13 @@ const Service = (props) => {
         Aos.init();
     })
 
+    const [isEven, setIsEven] = useState(false);
+
     return (
-        <div className={classes.card} data-aos="zoom-in-up">
+        <div
+            className={classes.card}
+            data-aos="fade-right"
+            data-aos-duration="1000">
             <img
                 className={classes.card__img}
                 src={props.img} alt={props.title} />
