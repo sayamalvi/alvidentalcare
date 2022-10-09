@@ -8,6 +8,7 @@ const Services = () => {
     useEffect(() => {
         Aos.init()
     })
+
     return (
         <>
             <h2
@@ -16,7 +17,8 @@ const Services = () => {
                 data-aos-duration="1100">
                 What do we offer ?
                 <br />A beautiful smile to you !</h2>
-            <div className={classes.container}>
+            <div
+                className={classes.container}>
                 {data.map((service) => (
                     <Service
                         key={service.id}

@@ -1,64 +1,14 @@
 @import "../../styles/variables.scss";
 .about {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    height: 100vh;
     background-color: $darkGreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     text-align: center;
-    min-width: 100vw;
-    padding: 2rem;
-    // height: 100vh;
-    &__heading {
-        margin: 2rem 0;
-        font-size: 2.8rem;
-        @include breakpoint(md) {
-            font-size: 4rem;
-        }
-        letter-spacing: 3px;
-    }
-    &__para {
-        margin: 2rem 0;
-        font-size: 1.2rem;
-        line-height: 2rem;
-        @include breakpoint(md) {
-            font-size: 1.3rem;
-            line-height: 2.8rem;
-            max-width: 70vw;
-            text-align: center;
-            margin: 0 auto;
-            padding: 3rem 0;
-        }
-    }
-    &__grid {
-        padding: 2rem;
-        display: grid;
-        justify-items: center;
-        align-items: center;
-        width: min-content;
-        margin: 0 auto;
-        padding: 2rem;
-        @include breakpoint(md) {
-            grid-template-columns: repeat(4, 1fr);
-        }
-        &__item {
-            margin: 1.5rem;
-            @include breakpoint(md) {
-                margin: 1rem 3rem;
-            }
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            img {
-                height: 7rem;
-                width: 7rem;
-            }
-            p {
-                color: white;
-                font-size: 1rem;
-                padding: 1rem;
-            }
-        }
+    text-transform: uppercase;
+    h1 {
+        font-size: 3rem;
     }
 }

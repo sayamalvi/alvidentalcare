@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import classes from './Service.module.scss'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
@@ -6,9 +6,7 @@ const Service = (props) => {
     useEffect(() => {
         Aos.init();
     })
-
-    const [isEven, setIsEven] = useState(false);
-
+    
     return (
         <div
             className={classes.card}
