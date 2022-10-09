@@ -1,1 +1,19 @@
-@import '../../styles/variables.scss'
+@import "../../styles/variables.scss";
+.review {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__heading {
+        font-size: 5rem;
+        @include breakpoint(md) {
+            font-size: 6rem;
+        }
+        text-align: center;
+        background: linear-gradient(to right, $lightGreen 10%, $darkGreen 80%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}

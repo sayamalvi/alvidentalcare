@@ -1,4 +1,12 @@
 @import "../../styles/variables.scss";
+.container {
+    height: 100vh;
+    background-color: $darkGreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .form {
     color: black;
     height: fit-content;
@@ -11,6 +19,7 @@
     margin: 3rem auto;
     border: 2px solid $darkGreen;
     border-radius: 15px;
+    background-color: white;
 }
 .date {
     padding: 1rem;
