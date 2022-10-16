@@ -1,22 +1,20 @@
 import React, { useState } from 'react'
 import classes from './Form.module.scss'
 import { TextField } from '@mui/material'
-
+import axios from "axios"
 const Form = () => {
+
+    const checkoutHandler = async (amount) => {
+        const { data } = await axios.post("http://localhost:4000/api/checkout", { amount })
+        console.log(data)
+    }
     const [user, setUser] = useState({
         name: "",
         phone: "",
         issue: "",
         date: ""
     })
-    // const handleChange = (e) => {
-    //     setUser((prev) => {
-    //         return {
-    //             ...prev,
-    //             value: e.target.value
-    //         }
-    //     })
-    // }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(user)
@@ -93,7 +91,9 @@ const Form = () => {
                     }}
 
                 />
-                <button className={classes.submit}>
+                <button className={classes.submit}
+                    onClick={checkoutHandler}
+                >
                     Book
                 </button>
 
