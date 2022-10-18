@@ -6,6 +6,7 @@ import Services from "./components/Services/Services";
 import Review from './components/Reviews/Review';
 import Form from './components/Form/Form';
 import About from './components/About/About'
+import Footer from './components/Footer/Footer';
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
       <Speciality />
       <Review />
       <Form />
+      <Footer />
     </div>
   );
 }

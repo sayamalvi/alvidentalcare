@@ -1,13 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import classes from './Form.module.scss'
 import { TextField } from '@mui/material'
-import axios from "axios"
 const Form = () => {
 
-    const checkoutHandler = async (amount) => {
-        const { data } = await axios.post("http://localhost:4000/api/checkout", { amount })
-        console.log(data)
-    }
     const [user, setUser] = useState({
         name: "",
         phone: "",
@@ -32,10 +27,12 @@ const Form = () => {
         <div className={classes.container}>
             <h1>Contact Us !</h1>
             <form
+
                 className={classes.form}
                 onSubmit={handleSubmit}
             >
                 <TextField
+                    required
                     id="outlined-basic"
                     label="Name"
                     variant="outlined"
@@ -51,6 +48,7 @@ const Form = () => {
                     }}
                 />
                 <TextField
+                    required
                     id="outlined-basic" label="Phone" variant="outlined"
                     margin='dense'
                     value={user.phone}
@@ -65,6 +63,7 @@ const Form = () => {
 
                 />
                 <TextField
+                    required
                     id="outlined-basic" label="Issue" variant="outlined"
                     margin='dense'
                     value={user.issue}
@@ -78,7 +77,9 @@ const Form = () => {
                     }}
 
                 />
-                <input type='date'
+                <input
+                    required
+                    type='date'
                     className={classes.date}
                     value={user.date}
                     onChange={(e) => {
@@ -92,7 +93,7 @@ const Form = () => {
 
                 />
                 <button className={classes.submit}
-                    onClick={checkoutHandler}
+
                 >
                     Book
                 </button>
