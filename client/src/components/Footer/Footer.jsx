@@ -4,6 +4,7 @@ import footerLogo from './ADC.jpeg'
 import { AiOutlineMail } from 'react-icons/ai'
 import { AiOutlinePhone } from 'react-icons/ai'
 import { ImLocation2 } from 'react-icons/im'
+import { AiOutlineInstagram } from 'react-icons/ai'
 
 
 const Footer = () => {
@@ -56,15 +57,20 @@ const Footer = () => {
                             style={{
                                 margin: '0 4px'
                             }}
-                            size='15px'
+                            size='20px'
+                            
                         />
-                        <a>alvidentalcare01@gmail.com</a>
+                        <AiOutlinePhone style={{
+                            margin: '0 4px'
+                        }}
+                            size='20px' />
+                        <AiOutlineInstagram
+                            style={{
+                                margin: '0 4px'
+                            }}
+                            size='20px'
+                        />
                     </div>
-                    <div>
-                        <AiOutlinePhone />
-                        <a>+(91) 9983116127</a>
-                    </div>
-
                 </div>
             </div>
 

@@ -1,21 +1,21 @@
 @import "../../styles/variables.scss";
 .container {
-    height: 100vh;
+    padding: 10%;
     background-color: $darkGreen;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 .form {
+    box-shadow: 18px 20px 15px 2px #433b3b40;
     color: black;
-    height: fit-content;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: fit-content;
     margin: 3rem auto;
     border: 2px solid $darkGreen;
     border-radius: 15px;
@@ -37,4 +37,7 @@
     color: white;
     letter-spacing: 2px;
     border-radius: 10px;
+    &:hover {
+        cursor: pointer;
+    }
 }
