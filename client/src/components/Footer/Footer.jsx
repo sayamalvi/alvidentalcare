@@ -5,6 +5,7 @@ import { AiOutlineMail } from 'react-icons/ai'
 import { AiOutlinePhone } from 'react-icons/ai'
 import { ImLocation2 } from 'react-icons/im'
 import { AiOutlineInstagram } from 'react-icons/ai'
+import { AiOutlineCopyright } from 'react-icons/ai'
 
 
 const Footer = () => {
@@ -51,29 +52,37 @@ const Footer = () => {
                     className={classes.footer__heading}>
                     Contact Us
                 </h2>
-                <div>
-                    <div>
-                        <AiOutlineMail
-                            style={{
-                                margin: '0 4px'
-                            }}
-                            size='20px'
-                            
-                        />
-                        <AiOutlinePhone style={{
+                <AiOutlineMail
+                    style={{
+                        margin: '0 4px'
+                    }}
+                    size='20px'
+
+                />
+                <AiOutlinePhone style={{
+                    margin: '0 4px'
+                }}
+                    size='20px' />
+                <AiOutlineInstagram
+                    style={{
+                        margin: '0 4px'
+                    }}
+                    size='20px'
+                />
+            </div>
+            <div className={classes.footer__copyright}>
+                <p>
+                    Copyright
+                    <AiOutlineCopyright
+                        style={{
                             margin: '0 4px'
                         }}
-                            size='20px' />
-                        <AiOutlineInstagram
-                            style={{
-                                margin: '0 4px'
-                            }}
-                            size='20px'
-                        />
-                    </div>
-                </div>
+                        size='15px'
+                    />
+                    Alvi Dental Care 2022
+                </p>
+                <p>All rights reserved</p>
             </div>
-
         </footer>
     )
 }

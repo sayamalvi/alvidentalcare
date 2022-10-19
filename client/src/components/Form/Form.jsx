@@ -1,7 +1,51 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import classes from './Form.module.scss'
 import { TextField } from '@mui/material'
+
+const loadScript = (src) => {
+    return new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = src
+        document.body.appendChild(script)
+        script.onload = () => {
+            resolve(true)
+        }
+        script.onerror = () => {
+            resolve(false)
+        }
+        document.body.appendChild(script)
+    })
+}
 const Form = () => {
+    const displayRazorpay = async () => {
+        const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
+        if (!res) {
+            alert("Failed to load")
+            return;
+        }
+        const options = {
+            "key": process.env.RAZORPAY_KEY,
+            "amount": "20000",
+            "currency": "INR",
+            "name": "Alvi Dental Care",
+            "description": "Test Transaction",
+            "image": "https://example.com/your_logo",
+            "order_id": "order_IluGWxBm9U8zJ8",
+            "handler": function (response) {
+                alert(response.razorpay_payment_id);
+                alert(response.razorpay_order_id);
+                alert(response.razorpay_signature)
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        }
+        const paymentObject = new window.Razorpay(options)
+        paymentObject.open()
+    }
 
     const [user, setUser] = useState({
         name: "",
@@ -32,6 +76,7 @@ const Form = () => {
                 onSubmit={handleSubmit}
             >
                 <TextField
+                    type='text'
                     required
                     id="outlined-basic"
                     label="Name"
@@ -48,6 +93,7 @@ const Form = () => {
                     }}
                 />
                 <TextField
+                    type='number'
                     required
                     id="outlined-basic" label="Phone" variant="outlined"
                     margin='dense'
@@ -63,6 +109,7 @@ const Form = () => {
 
                 />
                 <TextField
+                    type='text'
                     required
                     id="outlined-basic" label="Issue" variant="outlined"
                     margin='dense'
@@ -92,8 +139,9 @@ const Form = () => {
                     }}
 
                 />
-                <button className={classes.submit}
-
+                <button
+                    className={classes.submit}
+                    onClick={displayRazorpay}
                 >
                     Book
                 </button>
