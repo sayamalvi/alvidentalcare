@@ -19,29 +19,24 @@ const loadScript = (src) => {
 const Form = () => {
     const displayRazorpay = async () => {
         const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
+
         if (!res) {
             alert("Failed to load")
             return;
         }
+
+        const data = await fetch('http://localhost:1337/razorpay', { method: 'POST' }).then((t) => t.json()
+        )
+        console.log(data)
+
         const options = {
-            "key": process.env.RAZORPAY_KEY,
-            "amount": "20000",
-            "currency": "INR",
+            "key": process.env.REACT_APP_RAZORPAY_KEY,
+            currency: data.currency,
+            amount: data.amount.toString(),
+            order_id: data.id,
             "name": "Alvi Dental Care",
             "description": "Test Transaction",
-            "image": "https://example.com/your_logo",
-            "order_id": "order_IluGWxBm9U8zJ8",
-            "handler": function (response) {
-                alert(response.razorpay_payment_id);
-                alert(response.razorpay_order_id);
-                alert(response.razorpay_signature)
-            },
-            "notes": {
-                "address": "Razorpay Corporate Office"
-            },
-            "theme": {
-                "color": "#3399cc"
-            }
+
         }
         const paymentObject = new window.Razorpay(options)
         paymentObject.open()
@@ -74,6 +69,7 @@ const Form = () => {
                 autoComplete='off'
                 className={classes.form}
                 onSubmit={handleSubmit}
+
             >
                 <TextField
                     type='text'
@@ -140,7 +136,7 @@ const Form = () => {
 
                 />
                 <button
-                    className={classes.submit}
+                    className={classes.filled}
                     onClick={displayRazorpay}
                 >
                     Book
