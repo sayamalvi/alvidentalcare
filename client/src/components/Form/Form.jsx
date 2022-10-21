@@ -17,6 +17,8 @@ const loadScript = (src) => {
     })
 }
 const Form = () => {
+
+    // Razorpay --------------------------------------------------
     const displayRazorpay = async () => {
         const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
 
@@ -41,13 +43,22 @@ const Form = () => {
         const paymentObject = new window.Razorpay(options)
         paymentObject.open()
     }
-
+    //------------------------------------------------------------
+    const [isFilled, setIsFilled] = useState(false)
+    // const [isFormFilled, setFormFilled] = useState({
+    //     nameFilled: false,
+    //     phoneFilled: false,
+    //     issueFilled: false,
+    //     dateFilled: false
+    // })
+    let buttonClass = isFilled ? 'filled' : 'notFilled'
     const [user, setUser] = useState({
         name: "",
         phone: "",
         issue: "",
         date: ""
     })
+    console.log(buttonClass)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -62,6 +73,7 @@ const Form = () => {
             date: new Date()
         })
     }
+
     return (
         <div className={classes.container}>
             <h1>Book an Appointment</h1>
@@ -86,6 +98,12 @@ const Form = () => {
                                 name: e.target.value
                             }
                         })
+                        // setFormFilled((prev) => {
+                        //     return {
+                        //         ...prev,
+                        //         name: true
+                        //     }
+                        // })
                     }}
                 />
                 <TextField
@@ -136,7 +154,7 @@ const Form = () => {
 
                 />
                 <button
-                    className={classes.filled}
+                    className={classes.buttonClass}
                     onClick={displayRazorpay}
                 >
                     Book

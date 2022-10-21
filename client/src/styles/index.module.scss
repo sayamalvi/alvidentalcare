@@ -12,3 +12,18 @@ body {
     color: $white;
     font-family: $poppins;
 }
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    display: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $darkGreen;
+}

@@ -24,3 +24,18 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.showMore {
+    text-align: center;
+    margin: 1rem;
+    font-size: 1rem;
+    padding: 0.7rem;
+    width: 50%;
+    background-color: $darkGreen;
+    border: 2px solid transparent;
+    color: white;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    &:hover {
+        cursor: pointer;
+    }
+}

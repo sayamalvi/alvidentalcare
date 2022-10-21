@@ -41,3 +41,19 @@
         cursor: pointer;
     }
 }
+.notFilled {
+    margin: 1rem;
+    font-size: 1rem;
+    padding: 0.7rem;
+    width: 90%;
+    color: $darkGreen;
+    background-color: white;
+    border: 2px solid $darkGreen;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    &:hover {
+        cursor: pointer;
+    }
+    cursor: not-allowed;
+    pointer-events: none;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import classes from './Services.module.scss'
 import data from './data.js'
 import Service from './Service/Service'
@@ -8,7 +8,11 @@ const Services = () => {
     useEffect(() => {
         Aos.init()
     })
-
+    const [item, setItem] = useState(data)
+    const [visible, setVisible] = useState(4);
+    const showMore = () => {
+        setVisible(prev => prev + 4);
+    }
     return (
         <>
             <h2
@@ -19,7 +23,7 @@ const Services = () => {
                 <br />A beautiful smile to you !</h2>
             <div
                 className={classes.container}>
-                {data.map((service) => (
+                {item.slice(0, visible).map((service) => (
                     <Service
                         key={service.id}
                         title={service.title}
@@ -28,6 +32,11 @@ const Services = () => {
                         link={service.link}
                     />
                 ))}
+                {visible === 4 ? (
+                    <button
+                        onClick={showMore}
+                        className={classes.showMore}>Show More</button>
+                ) : null}
             </div>
         </>
     )
