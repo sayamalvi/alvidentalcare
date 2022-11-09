@@ -7,20 +7,24 @@ const About = () => {
         Aos.init()
     })
     return (
-        <div className={classes.about}
+        <div
+            className={classes.about}
             data-aos='fade-up'
             data-aos-duration="1100"
         >
             <h1
+                className={classes.about_heading}
                 data-aos='zoom-in'
                 data-aos-duration="1100"
             >
                 About Us
             </h1>
             <p
+                className={classes.about_para}
                 data-aos='zoom-in'
                 data-aos-delay='1'>
-                Alvi Dental Care is a Dental Clinic Website. What else could it be !</p>
+                qerertyutyuiouiopjkbvbjxfgeas4wetfgxcvbvbnmjkliohyfjryutuffghghcgvirturyuovryuovbryuoryuvbrybryubkrykbryubkryukb
+            </p>
         </div>
     )
 }

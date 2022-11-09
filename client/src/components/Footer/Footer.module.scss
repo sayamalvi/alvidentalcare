@@ -1,40 +1,47 @@
 @import "../../styles/variables.scss";
 .footer {
     text-align: center;
-    display: flex;
-    flex-direction: column;
     font-size: 0.8rem;
-    @include breakpoint(md) {
-        flex-direction: row;
-        align-items: flex-start;
-        text-align: left;
-    }
-    &__image {
-        height: 9rem;
-        width: 9rem;
-    }
-    &__heading {
-        color: $darkGreen;
-        font-size: 1rem;
-        margin: 1rem 0;
-    }
     padding: 2rem;
     justify-content: space-around;
     align-items: center;
     color: gray;
-    &__visit {
-        display: flex;
-        flex-direction: column;
-        max-width: 300px;
-        @include breakpoint(md) {
-            max-width: 200px;
-        }
+    @include breakpoint(md) {
+        flex-direction: row;
+        align-items: flex-start;
     }
-    &__hours {
-        display: flex;
-        flex-direction: column;
-        &__timing__bold {
-            font-weight: bold;
+    &__content {
+        @include breakpoint(md) {
+            display: flex;
+            justify-content: space-around;
+            text-align: left;
+            align-items: flex-start;
+        }
+        &__image {
+            height: 9rem;
+            width: 9rem;
+        }
+        &__heading {
+            color: $darkGreen;
+            font-size: 1rem;
+            margin: 1rem 0;
+        }
+        &__visit {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+            margin: 0 auto;
+            @include breakpoint(md) {
+                max-width: 200px;
+                margin: 0;
+            }
+        }
+        &__hours {
+            display: flex;
+            flex-direction: column;
+            &__timing__bold {
+                font-weight: bold;
+            }
         }
     }
     &__copyright {

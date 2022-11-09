@@ -17,19 +17,18 @@ const razorpay = new Razorpay({
 
 app.post('/razorpay', async (req, res) => {
     const payment_capture = 1
-    const amount = 200
+    const amount = 1
     const currency = 'INR'
 
     const options = {
         amount: amount * 100,
         currency,
         receipt: shortid.generate(),
-        payment_capture
+        payment_capture,
     }
 
     try {
         const response = await razorpay.orders.create(options)
-        console.log(response)
         res.json({
             id: response.id,
             currency: response.currency,
@@ -40,6 +39,16 @@ app.post('/razorpay', async (req, res) => {
         console.log(error)
     }
 })
+
+
+
+
+
+
+
+
+
+
 
 app.listen(1337, () => {
     console.log("Server running ")

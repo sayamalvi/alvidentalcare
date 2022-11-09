@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import classes from './Form.module.scss'
-import { TextField } from '@mui/material'
+// import { TextField } from '@mui/material'
 
 const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -29,7 +29,6 @@ const Form = () => {
 
         const data = await fetch('http://localhost:1337/razorpay', { method: 'POST' }).then((t) => t.json()
         )
-        console.log(data)
 
         const options = {
             "key": process.env.REACT_APP_RAZORPAY_KEY,
@@ -38,27 +37,31 @@ const Form = () => {
             order_id: data.id,
             "name": "Alvi Dental Care",
             "description": "Test Transaction",
-
+            "handler": function () {
+                // send form data to mongodb
+            },
         }
         const paymentObject = new window.Razorpay(options)
         paymentObject.open()
     }
     //------------------------------------------------------------
-    const [isFilled, setIsFilled] = useState(false)
+
+
+    // const [isFilled, setIsFilled] = useState(false)
     // const [isFormFilled, setFormFilled] = useState({
     //     nameFilled: false,
     //     phoneFilled: false,
     //     issueFilled: false,
     //     dateFilled: false
     // })
-    let buttonClass = isFilled ? 'filled' : 'notFilled'
+    // let buttonClass = isFilled ? 'filled' : 'notFilled'
     const [user, setUser] = useState({
         name: "",
         phone: "",
         issue: "",
         date: ""
     })
-    console.log(buttonClass)
+    // console.log(buttonClass)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -73,7 +76,6 @@ const Form = () => {
             date: new Date()
         })
     }
-
     return (
         <div className={classes.container}>
             <h1>Book an Appointment</h1>
@@ -81,15 +83,12 @@ const Form = () => {
                 autoComplete='off'
                 className={classes.form}
                 onSubmit={handleSubmit}
-
             >
-                <TextField
+                <input
                     type='text'
                     required
-                    id="outlined-basic"
-                    label="Name"
-                    variant="outlined"
-                    margin='dense'
+                    placeholder="Name"
+                    variant="filled"
                     value={user.name}
                     onChange={(e) => {
                         setUser((prev) => {
@@ -98,19 +97,13 @@ const Form = () => {
                                 name: e.target.value
                             }
                         })
-                        // setFormFilled((prev) => {
-                        //     return {
-                        //         ...prev,
-                        //         name: true
-                        //     }
-                        // })
                     }}
                 />
-                <TextField
+                <input
                     type='number'
                     required
-                    id="outlined-basic" label="Phone" variant="outlined"
-                    margin='dense'
+                    placeholder="Phone"
+                    variant="filled"
                     value={user.phone}
                     onChange={(e) => {
                         setUser((prev) => {
@@ -122,11 +115,11 @@ const Form = () => {
                     }}
 
                 />
-                <TextField
+                <input
                     type='text'
                     required
-                    id="outlined-basic" label="Issue" variant="outlined"
-                    margin='dense'
+                    placeholder="Issue"
+                    variant="filled"
                     value={user.issue}
                     onChange={(e) => {
                         setUser((prev) => {
@@ -140,6 +133,7 @@ const Form = () => {
                 />
                 <input
                     required
+                    placeholder="Select Date"
                     type='date'
                     className={classes.date}
                     value={user.date}

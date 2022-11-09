@@ -9,8 +9,7 @@
     text-align: center;
 }
 .form {
-    box-shadow: 18px 20px 15px 2px #433b3b40;
-    color: black;
+    color: white;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -19,13 +18,21 @@
     margin: 3rem auto;
     border: 2px solid $darkGreen;
     border-radius: 15px;
-    background-color: white;
 }
-.date {
+input {
+    color: rgb(236, 233, 233);
     padding: 1rem;
     margin: 0.5rem;
     width: 100%;
-    border: 1px solid rgb(210, 208, 208);
+    background-color: rgb(24, 170, 139);
+    border: 1px solid transparent;
+}
+input:focus {
+    outline: none !important;
+    border: 1px solid transparent;
+}
+input::placeholder {
+    color: rgb(226, 221, 221);
 }
 .filled {
     margin: 1rem;

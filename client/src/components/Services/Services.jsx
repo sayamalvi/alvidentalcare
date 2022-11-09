@@ -32,12 +32,14 @@ const Services = () => {
                         link={service.link}
                     />
                 ))}
-                {visible === 4 ? (
-                    <button
-                        onClick={showMore}
-                        className={classes.showMore}>Show More</button>
-                ) : null}
             </div>
+            {visible === 4 ? (
+                <button
+                    data-aos="zoom-in"
+                    data-aos-duration="900"
+                    onClick={showMore}
+                    className={classes.showMore}>Show More</button>
+            ) : null}
         </>
     )
 }
