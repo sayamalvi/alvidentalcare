@@ -45,23 +45,15 @@ const Form = () => {
         paymentObject.open()
     }
     //------------------------------------------------------------
-
-
-    // const [isFilled, setIsFilled] = useState(false)
-    // const [isFormFilled, setFormFilled] = useState({
-    //     nameFilled: false,
-    //     phoneFilled: false,
-    //     issueFilled: false,
-    //     dateFilled: false
-    // })
-    // let buttonClass = isFilled ? 'filled' : 'notFilled'
+    const date = new Date();
     const [user, setUser] = useState({
-        name: "",
+        firstName: "",
+        lastName: "",
         phone: "",
         issue: "",
-        date: ""
+        date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
+        time: date.toLocaleTimeString('en-IN')
     })
-    // console.log(buttonClass)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -73,7 +65,8 @@ const Form = () => {
             name: "",
             phone: "",
             issue: "",
-            date: new Date()
+            date: date.getDay(),
+            time: date.getHours()
         })
     }
     return (
@@ -84,69 +77,115 @@ const Form = () => {
                 className={classes.form}
                 onSubmit={handleSubmit}
             >
-                <input
-                    type='text'
-                    required
-                    placeholder="Name"
-                    variant="filled"
-                    value={user.name}
-                    onChange={(e) => {
-                        setUser((prev) => {
-                            return {
-                                ...prev,
-                                name: e.target.value
-                            }
-                        })
-                    }}
-                />
-                <input
-                    type='number'
-                    required
-                    placeholder="Phone"
-                    variant="filled"
-                    value={user.phone}
-                    onChange={(e) => {
-                        setUser((prev) => {
-                            return {
-                                ...prev,
-                                phone: e.target.value
-                            }
-                        })
-                    }}
+                <div>
+                    <p className={classes.form__name}>Name</p>
+                    <div className={classes.form__name__container}>
+                        <input
+                            type='text'
+                            required
+                            placeholder="First Name"
+                            variant="filled"
+                            value={user.firstName}
+                            onChange={(e) => {
+                                setUser((prev) => {
+                                    return {
+                                        ...prev,
+                                        firstName: e.target.value
+                                    }
+                                })
+                            }}
+                        />
+                        <input
+                            type='text'
+                            required
+                            placeholder="Last Name"
+                            variant="filled"
+                            value={user.lastName}
+                            onChange={(e) => {
+                                setUser((prev) => {
+                                    return {
+                                        ...prev,
+                                        lastName: e.target.value
+                                    }
+                                })
+                            }}
+                        />
+                    </div>
+                </div>
+                <div className={classes.form__number}>
+                    <p>Phone</p>
+                    <input
+                        type='number'
+                        required
+                        placeholder="Phone"
+                        variant="filled"
+                        value={user.phone}
+                        onChange={(e) => {
+                            setUser((prev) => {
+                                return {
+                                    ...prev,
+                                    phone: e.target.value
+                                }
+                            })
+                        }}
 
-                />
-                <input
-                    type='text'
-                    required
-                    placeholder="Issue"
-                    variant="filled"
-                    value={user.issue}
-                    onChange={(e) => {
-                        setUser((prev) => {
-                            return {
-                                ...prev,
-                                issue: e.target.value
-                            }
-                        })
-                    }}
+                    />
+                </div>
+                <div className={classes.form__concerns}>
+                    <p>Briefly describe your concerns</p>
+                    <input
+                        type='text'
+                        required
+                        variant="filled"
+                        value={user.issue}
+                        onChange={(e) => {
+                            setUser((prev) => {
+                                return {
+                                    ...prev,
+                                    issue: e.target.value
+                                }
+                            })
+                        }}
 
-                />
-                <input
-                    required
-                    placeholder="Select Date"
-                    type='date'
-                    className={classes.date}
-                    value={user.date}
-                    onChange={(e) => {
-                        setUser((prev) => {
-                            return {
-                                ...prev,
-                                date: e.target.value
-                            }
-                        })
-                    }}
+                    />
+                </div>
+                <div className={classes.form__date}>
+                    <p>Select date and time</p>
+                    <div className={classes.form__date__container}>
+                        <input
+                            required
+                            placeholder="Select Date"
+                            type='date'
+                            className={classes.date}
+                            value={user.date}
+                            onChange={(e) => {
+                                setUser((prev) => {
+                                    return {
+                                        ...prev,
+                                        date: e.target.value
+                                    }
+                                })
+                            }}
 
-                />
+                        />
+                        <input
+                            required
+                            placeholder="Select Date"
+                            type='time'
+                            className={classes.date}
+                            value={user.time}
+                            onChange={(e) => {
+                                setUser((prev) => {
+                                    return {
+                                        ...prev,
+                                        time: e.target.value
+                                    }
+                                })
+                            }}
+
+                        />
+                    </div>
+                </div>
                 <button
                     className={classes.buttonClass}
                     onClick={displayRazorpay}
