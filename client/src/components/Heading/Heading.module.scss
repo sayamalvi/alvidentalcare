@@ -11,7 +11,14 @@
         margin-top: 0;
     }
 }
-
+// .heading::before {
+//     content: url("./2021-10-16.jpg");
+//     background-color: rgba(0, 0, 0, 0.5);
+//     position: absolute;
+//     object-fit: cover;
+//     width: auto;
+//     height: auto;
+// }
 .heading {
     margin: 0 auto;
     font-family: $poppins;

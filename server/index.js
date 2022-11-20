@@ -1,4 +1,5 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const app = express();
 const path = require('path');
 const Razorpay = require('razorpay')
@@ -8,6 +9,7 @@ const { config } = require('dotenv');
 require('dotenv').config()
 config({ path: "./config/config.env" })
 app.use(cors())
+const PORT = process.env.PORT || 5000;
 
 
 const razorpay = new Razorpay({
@@ -15,6 +17,9 @@ const razorpay = new Razorpay({
     key_secret: process.env.RAZORPAY_SECRET
 })
 
+app.get('/home', (req, res) => {
+    res.sendFile("HOMEPAGEEEEE")
+})
 app.post('/razorpay', async (req, res) => {
     const payment_capture = 1
     const amount = 1
@@ -41,15 +46,10 @@ app.post('/razorpay', async (req, res) => {
 })
 
 
+//monogdb connection
+const connectionURL = "mongodb+srv://Sayam:sayamAlvi@cluster0.chzyy2x.mongodb.net/?retryWrites=true&w=majority";
 
 
-
-
-
-
-
-
-
-app.listen(1337, () => {
-    console.log("Server running ")
-})
+mongoose.connect(connectionURL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
+    .catch((err) => console.log(err.message));

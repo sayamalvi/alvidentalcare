@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import classes from './Form.module.scss'
-// import { TextField } from '@mui/material'
+
 
 const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -16,9 +16,11 @@ const loadScript = (src) => {
         document.body.appendChild(script)
     })
 }
+
+
 const Form = () => {
 
-    // Razorpay --------------------------------------------------
+    // Razorpay ---------------------------------------------------
     const displayRazorpay = async () => {
         const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
 
@@ -44,15 +46,43 @@ const Form = () => {
         const paymentObject = new window.Razorpay(options)
         paymentObject.open()
     }
-    //------------------------------------------------------------
-    const date = new Date();
+
+
+    //Validations----------------------------------------------
+
+    // const [formValid, setFormValid] = useState(false);
+    // const checkFormValid = () => {
+    //     nameValid && phoneValid ? setFormValid(true) : setFormValid(false);
+    // }
+
+    const [issuesValid, setIssuesValid] = useState(false);
+    const checkIssuesValidation = () => {
+        user.issue.length > 0 && user.history.length > 0 ? setIssuesValid(true) : setIssuesValid(false);
+    }
+    const [phoneValid, setPhoneValid] = useState(false);
+    const checkPhoneValidation = () => {
+        user.phone.length === 11 ? setPhoneValid(true) : setPhoneValid(false);
+        console.log(phoneValid);
+    }
+
+    const [nameValid, setNameValid] = useState(false);
+    const checkNameValidation = () => {
+        user.firstName.length > 0 && user.lastName.length > 0 ? setNameValid(true) : setNameValid(false)
+    }
+
+
+    //--------------------------------------------------------
     const [user, setUser] = useState({
         firstName: "",
         lastName: "",
         phone: "",
         issue: "",
-        date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
-        time: date.toLocaleTimeString('en-IN')
+        history: "",
+        date: '',
+        time: "",
+        // date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
+        // time: date.toLocaleTimeString('en-IN'),
+        concerns: []
     })
 
     const handleSubmit = (e) => {
@@ -62,13 +92,18 @@ const Form = () => {
     }
     const clear = () => {
         setUser({
-            name: "",
+            firstName: "",
+            lastName: "",
             phone: "",
             issue: "",
-            date: date.getDay(),
-            time: date.getHours()
+            date: '',
+            time: "",
+            concerns: []
         })
     }
+
+
+    // Main form ---------------------------------------------------
     return (
         <div className={classes.container}>
             <h1>Book an Appointment</h1>
@@ -93,6 +128,7 @@ const Form = () => {
                                         firstName: e.target.value
                                     }
                                 })
+                                checkNameValidation()
                             }}
                         />
                         <input
@@ -108,6 +144,7 @@ const Form = () => {
                                         lastName: e.target.value
                                     }
                                 })
+                                checkNameValidation()
                             }}
                         />
                     </div>
@@ -127,15 +164,41 @@ const Form = () => {
                                     phone: e.target.value
                                 }
                             })
+                            checkPhoneValidation();
                         }}
 
                     />
                 </div>
-                <div className={classes.form__concerns}>
-                    <p>Briefly describe your concerns</p>
-                    <input
+                <div className={classes.form__history}>
+                    <p>Do you have any past medical history ?</p>
+                    <div className={classes.form__concerns__history}>
+                        <textarea
+                            type='text'
+                            required
+                            placeholder='Blood pressure, Diabetes, etc.'
+                            rows='3'
+                            variant="filled"
+                            value={user.history}
+                            onChange={(e) => {
+                                setUser((prev) => {
+                                    return {
+                                        ...prev,
+                                        history: e.target.value
+                                    }
+                                })
+                                checkIssuesValidation()
+                            }}
+
+                        />
+                    </div>
+                </div>
+                <div className={classes.form__describe_concerns}>
+                    <p>Chief Complaint</p>
+                    <textarea
                         type='text'
                         required
+                        placeholder='Toothache, Bleeding, etc.'
+                        rows='5'
                         variant="filled"
                         value={user.issue}
                         onChange={(e) => {
@@ -145,6 +208,7 @@ const Form = () => {
                                     issue: e.target.value
                                 }
                             })
+                            checkIssuesValidation()
                         }}
 
                     />
@@ -186,12 +250,20 @@ const Form = () => {
                         />
                     </div>
                 </div>
-                <button
-                    className={classes.buttonClass}
-                    onClick={displayRazorpay}
-                >
-                    Book
-                </button>
+                {phoneValid && nameValid && issuesValid ? (
+                    <button
+                        className={classes.form__buttonClass}
+                        onClick={displayRazorpay}
+                    >
+                        Book
+                    </button>
+                ) : (
+                    <button
+                        className={classes.notFilled}
+                    >
+                        Book
+                    </button>
+                )}
 
             </form>
         </div>
