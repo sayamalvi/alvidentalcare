@@ -18,9 +18,6 @@ const razorpay = new Razorpay({
     key_secret: process.env.RAZORPAY_SECRET
 })
 
-app.get('/home', (req, res) => {
-    res.sendFile("HOMEPAGEEEEE")
-})
 app.post('/razorpay', async (req, res) => {
     const payment_capture = 1
     const amount = 1

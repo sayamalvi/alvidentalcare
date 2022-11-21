@@ -108,7 +108,7 @@ const Form = () => {
     // Main form ---------------------------------------------------
     return (
         <div className={classes.container}>
-            {/* {isPaid === false ? (
+            {isPaid === false ? (
                 <>
                     <h1>Book an Appointment</h1>
                     <form
@@ -272,8 +272,8 @@ const Form = () => {
                     </form>
                 </>
             ) : (
-            )} */}
                 <PaymentSuccess />
+            )}
         </div>
     )
 }

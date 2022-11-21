@@ -3,7 +3,7 @@ import classes from "./Footer.module.scss"
 import footerLogo from './ADC.jpeg'
 import { AiOutlineMail } from 'react-icons/ai'
 import { AiOutlinePhone } from 'react-icons/ai'
-import { ImLocation2 } from 'react-icons/im'
+// import { ImLocation2 } from 'react-icons/im'
 import { AiOutlineInstagram } from 'react-icons/ai'
 import { AiOutlineCopyright } from 'react-icons/ai'
 

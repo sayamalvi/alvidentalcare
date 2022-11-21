@@ -1,11 +1,48 @@
 @import "../../styles/variables.scss";
 .payment_wrapper {
-    
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
     color: white;
     font-family: $poppins;
+    &_box {
+        max-width: 400px;
+        padding: 2rem;
+        border-radius: 20px;
+        border: 1px solid $darkGreen;
+        box-shadow: 6px 7px 7px 10px rgb(24 170 139);
+        height: auto;
+        width: auto;
+        h3 {
+            text-transform: capitalize;
+            letter-spacing: 2px;
+            font-size: 1.5rem;
+        }
+        h4 {
+            font-weight: 200;
+            margin-top: 2rem;
+        }
+        &_button {
+            cursor: pointer;
+            font-weight: bold;
+            margin: 1rem auto;
+            width: fit-content;
+            padding: 0.6rem 2rem;
+            border-radius: 8px;
+            color: white;
+            letter-spacing: 3px;
+            border: 1px solid transparent;
+            background-color: transparent;
+            border: 1px solid white;
+            box-shadow: 6px 7px 4px 0px rgb(24 170 139);
+        }
+        img {
+            display: block;
+            margin: 1rem auto;
+            border: none;
+            height: 4rem;
+            width: 4rem;
+        }
+    }
 }
