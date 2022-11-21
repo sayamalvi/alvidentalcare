@@ -9,6 +9,7 @@ const { config } = require('dotenv');
 require('dotenv').config()
 config({ path: "./config/config.env" })
 app.use(cors())
+app.use(express.json())
 const PORT = process.env.PORT || 5000;
 
 
@@ -47,9 +48,11 @@ app.post('/razorpay', async (req, res) => {
 
 
 //monogdb connection
-const connectionURL = "mongodb+srv://Sayam:sayamAlvi@cluster0.chzyy2x.mongodb.net/?retryWrites=true&w=majority";
-
+const connectionURL = "mongodb+srv://Sayam:sayamAlvi@cluster0.chzyy2x.mongodb.net/alvidentalcare";
 
 mongoose.connect(connectionURL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
     .catch((err) => console.log(err.message));
+
+
+app.use("/", require("./routes/patientRoute"))

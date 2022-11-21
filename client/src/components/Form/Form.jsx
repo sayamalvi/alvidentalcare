@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import classes from './Form.module.scss'
-
+import axios from "axios";
 
 const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -29,7 +29,7 @@ const Form = () => {
             return;
         }
 
-        const data = await fetch('http://localhost:1337/razorpay', { method: 'POST' }).then((t) => t.json()
+        const data = await fetch('http://localhost:5000/razorpay', { method: 'POST' }).then((t) => t.json()
         )
 
         const options = {
@@ -41,6 +41,8 @@ const Form = () => {
             "description": "Test Transaction",
             "handler": function () {
                 // send form data to mongodb
+                const newPatient = { ...user }
+                axios.post('http://localhost:5000/create', newPatient)
             },
         }
         const paymentObject = new window.Razorpay(options)
@@ -62,7 +64,6 @@ const Form = () => {
     const [phoneValid, setPhoneValid] = useState(false);
     const checkPhoneValidation = () => {
         user.phone.length === 11 ? setPhoneValid(true) : setPhoneValid(false);
-        console.log(phoneValid);
     }
 
     const [nameValid, setNameValid] = useState(false);
@@ -82,12 +83,10 @@ const Form = () => {
         time: "",
         // date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
         // time: date.toLocaleTimeString('en-IN'),
-        concerns: []
     })
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(user)
         clear();
     }
     const clear = () => {
@@ -96,9 +95,9 @@ const Form = () => {
             lastName: "",
             phone: "",
             issue: "",
+            history: "",
             date: '',
-            time: "",
-            concerns: []
+            time: ""
         })
     }
 
