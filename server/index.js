@@ -48,9 +48,7 @@ app.post('/razorpay', async (req, res) => {
 
 
 //monogdb connection
-const connectionURL = "mongodb+srv://Sayam:sayamAlvi@cluster0.chzyy2x.mongodb.net/alvidentalcare";
-
-mongoose.connect(connectionURL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
     .catch((err) => console.log(err.message));
 
