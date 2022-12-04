@@ -3,13 +3,11 @@ import classes from "./PaymentSuccess.module.scss"
 import animation from "./animation.gif"
 import Aos from 'aos'
 import 'aos/dist/aos.css'
-const PaymentSucess = () => {
+const PaymentSucess = ({ setIsPaid }) => {
   useEffect(() => {
     Aos.init()
   })
-  const clickOkay = () => {
 
-  }
   return (
     <div className={classes.payment_wrapper}>
       <div className={classes.payment_wrapper_box}
@@ -21,7 +19,7 @@ const PaymentSucess = () => {
         <h4>We will contact you soon regarding timing confirmation</h4>
         <img src={animation} alt='confirm'></img>
         <button className={classes.payment_wrapper_box_button}
-          onClick={clickOkay}>Okay</button>
+          onClick={() => { setIsPaid(false) }}>Okay</button>
       </div>
     </div>
   )

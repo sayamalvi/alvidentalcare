@@ -45,6 +45,8 @@ const Form = () => {
                 const newPatient = { ...user }
                 axios.post('http://localhost:5000/create', newPatient)
                 setIsPaid(true)
+                setFormValid(false)
+                clear()
             },
         }
         const paymentObject = new window.Razorpay(options)
@@ -54,26 +56,30 @@ const Form = () => {
 
     //Validations----------------------------------------------
 
-    // const [formValid, setFormValid] = useState(false);
-    // const checkFormValid = () => {
-    //     nameValid && phoneValid ? setFormValid(true) : setFormValid(false);
-    // }
 
     const [isPaid, setIsPaid] = useState(false);
     const [issuesValid, setIssuesValid] = useState(false);
     const checkIssuesValidation = () => {
-        user.issue.length > 0 && user.history.length > 0 ? setIssuesValid(true) : setIssuesValid(false);
+        user.issue.length > 1 && user.history.length > 1 ? setIssuesValid(true) : setIssuesValid(false);
     }
     const [phoneValid, setPhoneValid] = useState(false);
     const checkPhoneValidation = () => {
-        user.phone.length === 11 ? setPhoneValid(true) : setPhoneValid(false);
+        user.phone.length === 9 ? setPhoneValid(true) : setPhoneValid(false);
     }
 
     const [nameValid, setNameValid] = useState(false);
     const checkNameValidation = () => {
-        user.firstName.length > 0 && user.lastName.length > 0 ? setNameValid(true) : setNameValid(false)
+        user.firstName.length > 1 && user.lastName.length > 1 ? setNameValid(true) : setNameValid(false)
     }
-
+    const [dateValid, setDateValid] = useState(false);
+    const checkDateValidation = () => {
+        user.date !== " " && user.time !== " " ? setDateValid(true) : setDateValid(false)
+        console.log(user.time, user.date)
+    }
+    const [formValid, setFormValid] = useState(false);
+    const checkFormValid = () => {
+        phoneValid && nameValid && issuesValid && dateValid ? setFormValid(true) : setFormValid(false);
+    }
 
     //--------------------------------------------------------
     const [user, setUser] = useState({
@@ -84,14 +90,13 @@ const Form = () => {
         history: "",
         date: '',
         time: "",
-        // date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
-        // time: date.toLocaleTimeString('en-IN'),
     })
 
     const handleSubmit = (e) => {
         e.preventDefault();
         clear();
     }
+
     const clear = () => {
         setUser({
             firstName: "",
@@ -103,7 +108,6 @@ const Form = () => {
             time: ""
         })
     }
-
 
     // Main form ---------------------------------------------------
     return (
@@ -153,41 +157,68 @@ const Form = () => {
                                 />
                             </div>
                         </div>
-                        <div className={classes.form__number}>
-                            <p>Phone</p>
-                            <input
-                                type='number'
-                                required
-                                placeholder="Phone"
-                                variant="filled"
-                                value={user.phone}
-                                onChange={(e) => {
-                                    setUser((prev) => {
-                                        return {
-                                            ...prev,
-                                            phone: e.target.value
-                                        }
-                                    })
-                                    checkPhoneValidation();
-                                }}
-
-                            />
-                        </div>
-                        <div className={classes.form__history}>
-                            <p>Do you have any past medical history ?</p>
-                            <div className={classes.form__concerns__history}>
-                                <textarea
-                                    type='text'
+                        {nameValid &&
+                            <div className={classes.form__number}>
+                                <p>Phone</p>
+                                <input
+                                    type='number'
                                     required
-                                    placeholder='Blood pressure, Diabetes, etc.'
-                                    rows='3'
+                                    placeholder="Phone"
                                     variant="filled"
-                                    value={user.history}
+                                    value={user.phone}
                                     onChange={(e) => {
                                         setUser((prev) => {
                                             return {
                                                 ...prev,
-                                                history: e.target.value
+                                                phone: e.target.value
+                                            }
+                                        })
+                                        checkPhoneValidation();
+                                    }}
+
+                                />
+                            </div>
+                        }
+                        {phoneValid &&
+                            <div className={classes.form__history}>
+                                <p>Do you have any past medical history ?</p>
+                                <div className={classes.form__concerns__history}>
+                                    <textarea
+                                        type='text'
+                                        required
+                                        placeholder='Blood pressure, Diabetes, etc.'
+                                        rows='3'
+                                        variant="filled"
+                                        value={user.history}
+                                        onChange={(e) => {
+                                            setUser((prev) => {
+                                                return {
+                                                    ...prev,
+                                                    history: e.target.value
+                                                }
+                                            })
+                                            checkIssuesValidation()
+                                        }}
+
+                                    />
+                                </div>
+                            </div>
+                        }
+                        {phoneValid &&
+                            <div className={classes.form__describe_concerns}>
+                                <p>Chief Complaint</p>
+                                <textarea
+                                    type='text'
+                                    required
+                                    placeholder='Toothache, Bleeding, etc.'
+                                    rows='5'
+                                    variant="filled"
+                                    value={user.issue}
+                                    onChange={(e) => {
+                                        setUser((prev) => {
+                                            return {
+                                                ...prev,
+                                                issue: e.target.value
                                             }
                                         })
                                         checkIssuesValidation()
@@ -195,66 +226,49 @@ const Form = () => {
 
                                 />
                             </div>
-                        </div>
-                        <div className={classes.form__describe_concerns}>
-                            <p>Chief Complaint</p>
-                            <textarea
-                                type='text'
-                                required
-                                placeholder='Toothache, Bleeding, etc.'
-                                rows='5'
-                                variant="filled"
-                                value={user.issue}
-                                onChange={(e) => {
-                                    setUser((prev) => {
-                                        return {
-                                            ...prev,
-                                            issue: e.target.value
-                                        }
-                                    })
-                                    checkIssuesValidation()
-                                }}
+                        }
+                        {issuesValid &&
+                            <div className={classes.form__date}>
+                                <p>Select date and time</p>
+                                <div className={classes.form__date__container}>
+                                    <input
+                                        required
+                                        placeholder="Select Date"
+                                        type='date'
+                                        className={classes.date}
+                                        value={user.date}
+                                        onChange={(e) => {
+                                            setUser((prev) => {
+                                                return {
+                                                    ...prev,
+                                                    date: e.target.value
+                                                }
+                                            })
+                                        }}
 
-                            />
-                        </div>
-                        <div className={classes.form__date}>
-                            <p>Select date and time</p>
-                            <div className={classes.form__date__container}>
-                                <input
-                                    required
-                                    placeholder="Select Date"
-                                    type='date'
-                                    className={classes.date}
-                                    value={user.date}
-                                    onChange={(e) => {
-                                        setUser((prev) => {
-                                            return {
-                                                ...prev,
-                                                date: e.target.value
-                                            }
-                                        })
-                                    }}
+                                    />
+                                    <input
+                                        required
+                                        placeholder="Select Date"
+                                        type='time'
+                                        className={classes.date}
+                                        value={user.time}
+                                        onChange={(e) => {
+                                            setUser((prev) => {
+                                                return {
+                                                    ...prev,
+                                                    time: e.target.value
+                                                }
+                                            })
+                                            checkDateValidation()
+                                            checkFormValid()
+                                        }}
 
-                                />
-                                <input
-                                    required
-                                    placeholder="Select Date"
-                                    type='time'
-                                    className={classes.date}
-                                    value={user.time}
-                                    onChange={(e) => {
-                                        setUser((prev) => {
-                                            return {
-                                                ...prev,
-                                                time: e.target.value
-                                            }
-                                        })
-                                    }}
-
-                                />
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        {phoneValid && nameValid && issuesValid ? (
+                        }
+                        {formValid ? (
                             <button
                                 className={classes.form__buttonClass}
                                 onClick={displayRazorpay}
@@ -272,7 +286,7 @@ const Form = () => {
                     </form>
                 </>
             ) : (
-                <PaymentSuccess />
+                <PaymentSuccess setIsPaid={setIsPaid} />
             )}
         </div>
     )

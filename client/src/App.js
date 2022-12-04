@@ -7,17 +7,25 @@ import Review from './components/Reviews/Review';
 import Form from './components/Form/Form';
 import About from './components/About/About'
 import Footer from './components/Footer/Footer';
+import { Route } from 'react-router-dom'
+import Gallery from './components/Gallery/Gallery';
 function App() {
   return (
     <div className="App">
-      <Nav />
-      <Heading />
-      <About />
-      <Services />
-      <Speciality />
-      <Review />
-      <Form />
-      <Footer />
+      <Route path='/gallery'>
+        <Gallery />
+      </Route>
+      <Route exact path='/'>
+        <Nav />
+        <Heading />
+        <About />
+        <Services />
+        <Speciality />
+        <Review />
+        <Form />
+        <Footer />
+      </Route>
+
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import classes from './Nav.module.scss'
 import { BiMenuAltRight } from 'react-icons/bi'
 import { AiOutlineClose } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 const Nav = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const menuTogglerHandler = () => {
@@ -20,16 +21,19 @@ const Nav = () => {
                 className={`${classes.header__content__nav} ${menuOpen ? classes.isMenu : ""}`}>
                 <ul>
                     <li>
-                        <a href='/'>Home</a>
+                        <Link to='/'>Home</Link>
                     </li>
                     <li>
-                        <a href='/'>About</a>
+                        <Link to='/'>About</Link>
                     </li>
                     <li>
-                        <a href='/'>Services</a>
+                        <Link to='/'>Services</Link>
                     </li>
                     <li>
-                        <a href='/'>Contact</a>
+                        <Link to='/gallery'>Gallery</Link>
+                    </li>
+                    <li>
+                        <Link to='/'> Appointment</Link>
                     </li>
                 </ul>
             </nav>

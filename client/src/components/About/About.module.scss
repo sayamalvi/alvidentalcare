@@ -7,10 +7,13 @@
     align-items: center;
     flex-direction: column;
     text-align: center;
+    width: 100vw;
     &_heading {
         text-transform: uppercase;
         font-size: 3rem;
     }
     &_para {
+        max-width: 70%;
+        word-wrap: break-word;
     }
 }
